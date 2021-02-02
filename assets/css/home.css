@@ -3,6 +3,7 @@ body{
     margin: 0;
     width: 100vw;
     height: 100vh;
+    font-family:sans-serif;
     background-color: black;
 }
 
@@ -14,8 +15,8 @@ div,header,main{
 #todo-list-container{
     margin: auto;
     background-color: #161616;
-    width: 58%;
-    height: 58%;
+    width: 925px;
+    height: 575px;
     border-radius: 18px;
     overflow: hidden;
 }
@@ -27,20 +28,20 @@ div,header,main{
     padding-left: 1.5vw;
     background-color:#2b2b2b;
     width: 100%;
-    height: 20%;
+    height: 15%;
 }
 
 /*--heading progress bar container--*/
 .progress-bar-container{
     position: relative;
     display: flex;
-    width: 16.2%;
+    width: 22%;
     justify-content: space-between;
 }
 
 /*--progress bar bg boxes--*/
 .progress-bar-bg{
-    width: 2vw;
+    width: 23%;
     height: 1.2vw;
     border-radius: 3px;
     background: grey;
@@ -58,9 +59,9 @@ div,header,main{
 }
 
 .progress-bar-filler{
-    height: 1.2vw;
+    height: 100%;
     width: 0;
-    background-color: rgb(31, 113, 180);
+    background-color: #0074E0;
     animation: fillColor .2s linear 1;
     animation-fill-mode: forwards;
 }
@@ -68,8 +69,99 @@ div,header,main{
 
 /*---styles for main part of the todo list---*/
 main{
-    display: flex;
-    min-width: 100%;
+    width: 100%;
     height: 80%;
-    overflow: scroll;
 }
+
+/*--hiding scrollbar--*/
+#todo-list{
+    width: 400%;
+    height: 85%;
+    display: flex;
+    transition: transform .5s linear;
+}
+
+/*--todo div width--*/
+#todo-list > div{
+    width: 25%;
+    height: 100%;
+}
+
+/*-- styles for the div which will be showed if there are no tasks--*/
+
+#no-tasks{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1%;
+    box-sizing: border-box;
+}
+/*--animation for the text to fade in--*/
+@keyframes textFadeIn{
+    from{
+        opacity: 0;
+        top: 60%;
+    }
+
+    to{
+        opacity: 1;
+        top: 35%;
+    }
+}
+
+.no-tasks-msg{
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.no-tasks-msg p{
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    opacity: 0;
+    font-weight: 400;
+    text-align: center;
+    font-size: 2vw;
+    animation: textFadeIn .5s ease-in 1;
+    animation-fill-mode: forwards;
+    text-shadow: 2px 2px #000000;
+    line-height: 1.4;
+}
+
+/*--styles for create new task btn--*/
+#create-new-task-btn{
+    background-color: #0074E0;
+    width: 24%;
+    height: 20%;
+    padding: 4%;
+    border: 0;
+    border-radius: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25vw;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+}
+
+/*--create task button hover logic--*/
+#create-new-task-btn:hover{
+    background-color: #035097;
+}
+
+
+/*--styles for create task--*/
+/* #create-task-container{
+    background-color: red;
+    width: 25%;
+    height: 100%;
+} */
+

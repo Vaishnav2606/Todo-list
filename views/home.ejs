@@ -29,10 +29,37 @@
         </header>
 
         <main>
+
+            <!--div for all the neccessary steps to create a task and to display 
+                tasks. this is scrollable through js-->
+                <div id="todo-list" class=".disable-scrollbars">
+                    <!--div for the home part which will contain the tasks and if there 
+                        isnt any task then some message will be displayed-->
+                    <div id="task-container">
+
+                        <% if(tasks.length == 0){ %>
+                                <!--this is wil be showed if there isnt any tasks-->
+                                <div id="no-tasks">
+                                    <!--message if there is no tasks-->
+                                    <div class="no-tasks-msg">
+                                        <p>You dont have any tasks. Create one by clicking on the 'Create Task' button</p>
+                                    </div>
+                                    <button id="create-new-task-btn">Create Task</button>
+                                </div>
+                        <% } %> 
+
+                    </div>
+
+                    <!-- <div id="create-task-container"></div> -->
+
+                </div>
+            
         </main>
 
     </div>
-    
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
