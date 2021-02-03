@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
     <title>Todo List</title>
+
+    <!--font awesome cdn-->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+    crossorigin="anonymous"></script>
+
+    <!--sources for datepicker-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+    </script>
 </head>
 <body>
     
@@ -19,11 +38,11 @@
                 <!--background boxes of the bar-->
                 <div class="progress-bar-bg">
                     <!--progress-bar-filler class is used to fill the boxes-->
+                    <div class="fillColor progress-bar-filler"></div>
+                </div>
+                <div class="progress-bar-bg">
                     <div class="progress-bar-filler"></div>
                 </div>
-                <div class="progress-bar-bg"></div>
-                <div class="progress-bar-bg"></div>
-                <div class="progress-bar-bg"></div>
                 
             </div>
         </header>
@@ -42,7 +61,7 @@
                                 <div id="no-tasks">
                                     <!--message if there is no tasks-->
                                     <div class="no-tasks-msg">
-                                        <p>You dont have any tasks. Create one by clicking on the 'Create Task' button</p>
+                                        <p>You don't have any tasks. Create one by clicking on the 'Create Task' button</p>
                                     </div>
                                     <button id="create-new-task-btn">Create Task</button>
                                 </div>
@@ -50,16 +69,48 @@
 
                     </div>
 
-                    <!-- <div id="create-task-container"></div> -->
+
+                    <!--this contains the next tab which is a form to create a task-->
+                    <div id="create-task-container">
+
+                        <form action="/create-task" method="POST" id="task-form">
+                            
+                            <!--description-->
+                            <input type="text" id="description" name ="description" class="form-input" placeholder="Description" required>
+                            
+                            <!--Category and date-->
+                            <div id="category-date-container">
+                                <!--category-->
+                                <select id="category" name="category" class="form-input" required>
+                                    <option value="" selected disabled hidden style="color:rgb(158, 154, 154);">Category</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="work">Work</option>
+                                    <option value="school">School</option>
+                                    <option value="other">other</option>
+                                </select>
+                                <!--date using JQuery UI-->
+                                <input type="text" id="datepicker" class="form-input" name="date" placeholder="Date" required>
+
+                            </div>
+                            
+                        </form>
+
+                    </div>
 
                 </div>
-            
         </main>
 
+        <footer>
+            <!--backward and forward buttons-->
+            <div id="backward-forward-btns">
+                <button id="backward-btn" style="color: rgb(126, 125, 125);"><i class="fas fa-arrow-left"></i></button>
+                <button id="forward-btn"><i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <button id="add-task">Add Task</button>
+        </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" 
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
-    crossorigin="anonymous"></script>
+    
     <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>

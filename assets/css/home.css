@@ -5,9 +5,10 @@ body{
     height: 100vh;
     font-family:sans-serif;
     background-color: black;
+    color: white;
 }
 
-div,header,main{
+div,header,main, footer{
     box-sizing: border-box;
 }
 
@@ -19,13 +20,14 @@ div,header,main{
     height: 575px;
     border-radius: 18px;
     overflow: hidden;
+    position: relative;
 }
 
 /*--todo list heading--*/
 #todo-list-heading{
     display: flex;
     align-items: center;
-    padding-left: 1.5vw;
+    padding-left: 2.5rem;
     background-color:#2b2b2b;
     width: 100%;
     height: 15%;
@@ -35,14 +37,14 @@ div,header,main{
 .progress-bar-container{
     position: relative;
     display: flex;
-    width: 22%;
+    width: 12%;
     justify-content: space-between;
 }
 
 /*--progress bar bg boxes--*/
 .progress-bar-bg{
-    width: 23%;
-    height: 1.2vw;
+    width: 48%;
+    height: 1.8rem;
     border-radius: 3px;
     background: grey;
     overflow: hidden
@@ -58,25 +60,41 @@ div,header,main{
     }
 }
 
+@keyframes emptyColor{
+    from{
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+.fillColor{
+    animation: fillColor .4s linear 1;
+    animation-fill-mode: forwards;
+}
+
+.emptyColor{
+    animation: emptyColor .4s linear 1;
+    animation-fill-mode: forwards;
+}
+
 .progress-bar-filler{
     height: 100%;
     width: 0;
     background-color: #0074E0;
-    animation: fillColor .2s linear 1;
-    animation-fill-mode: forwards;
 }
-
 
 /*---styles for main part of the todo list---*/
 main{
     width: 100%;
-    height: 80%;
+    height: 68%;
 }
 
 /*--hiding scrollbar--*/
 #todo-list{
     width: 400%;
-    height: 85%;
+    height: 100%;
     display: flex;
     transition: transform .5s linear;
 }
@@ -103,20 +121,22 @@ main{
 @keyframes textFadeIn{
     from{
         opacity: 0;
-        top: 60%;
+        top: 80%;
     }
 
     to{
         opacity: 1;
-        top: 35%;
+        top: 50%;
     }
 }
 
 .no-tasks-msg{
-    height: 50%;
+    height: 60%;
     width: 100%;
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .no-tasks-msg p{
@@ -127,41 +147,187 @@ main{
     opacity: 0;
     font-weight: 400;
     text-align: center;
-    font-size: 2vw;
-    animation: textFadeIn .5s ease-in 1;
+    font-size: 2.4rem;
+    animation: textFadeIn .5s linear 1;
     animation-fill-mode: forwards;
     text-shadow: 2px 2px #000000;
     line-height: 1.4;
 }
 
 /*--styles for create new task btn--*/
-#create-new-task-btn{
+
+button{
     background-color: #0074E0;
-    width: 24%;
-    height: 20%;
-    padding: 4%;
     border: 0;
-    border-radius: 32px;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25vw;
     letter-spacing: 1px;
     cursor: pointer;
     outline: none;
+    color: white;
 }
 
-/*--create task button hover logic--*/
-#create-new-task-btn:hover{
+button:hover{
     background-color: #035097;
 }
 
+#create-new-task-btn{
+    width: 24%;
+    height: 20%;
+    padding: 4%;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    
+}
 
 /*--styles for create task--*/
-/* #create-task-container{
-    background-color: red;
-    width: 25%;
+#create-task-container form{
+    display: flex;
+    width: 100%;
     height: 100%;
-} */
+    box-sizing: border-box;
+    padding: 2%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+/*--styles for description--*/
+#description{
+    width: 100%;
+}
+
+.form-input::placeholder{
+    color: rgb(158, 154, 154);
+}
+
+.form-input{
+    height: 20%;
+    border-radius: 12px;
+    border: 0;
+    background-color: rgb(58, 57, 57);
+    color: white;
+    font-size: 1.4vw;
+    padding: .6vw;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/*--styles for category and date--*/
+
+#category-date-container{
+    width: 100%; 
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*--category styles--*/
+#category{
+    width:  48%;
+    height: 100%;
+}
+
+option{
+    color: white;
+    background-color: rgb(54, 54, 54);
+    padding: 3%;
+}
+
+/*--to remove the dropdown arrow--*/
+select {
+    -moz-appearance: window;
+    -webkit-appearance: none;
+    padding-right: 20px;
+}
+
+/*--date styles--*/
+#datepicker{
+    width: 48%;
+    height: 100%;
+}
+
+
+/*--styles for footer--*/
+
+/*--animation for the footer--*/
+@keyframes footerFadeIn{
+    from{
+        bottom: -25%;
+        opacity: 0;
+    }
+    to{
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+.footerFadeIn{
+    animation: footerFadeIn .5s 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes footerFadeOut{
+    from{
+        bottom: 0;
+        opacity: 1;
+    }
+    to{
+        bottom: -25%;
+        opacity: 0;
+    }
+}
+
+.footerFadeOut{
+    animation: footerFadeOut .5s 1;
+    animation-fill-mode: forwards;
+}
+
+footer{
+    position: absolute;
+    width: 100%;
+    height: 18%;
+    display: flex;
+    justify-content: space-between;
+    background-color:#2b2b2b;
+    padding: 1rem 2rem;
+    opacity: 0;
+    bottom: 0;
+    transition: .6s ease-out;
+}
+
+/*--styles for backward and forward button--*/
+#backward-forward-btns{
+    width: 8%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#backward-forward-btns button{
+    background-color: inherit;
+    border: 0;
+    outline: none;
+    width: 35%;
+    color: rgb(83, 81, 81);;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+#backward-btn:hover{
+    color: rgb(192, 192, 192)!important;
+}
+
+/*--Add task button styles--*/
+#add-task{
+    height: 100%;
+    width: 20%;
+    border-radius: 8px;
+    font-size: 1.5rem;  
+}

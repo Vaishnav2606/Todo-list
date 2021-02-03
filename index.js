@@ -2,6 +2,9 @@ const express = require('express');
 const port = 8000;
 
 const app = express();
+app.use(express.urlencoded())
+
+var list = [];
 
 //Using the express Router
 app.use('/', require('./routes'))
@@ -12,6 +15,8 @@ app.set("views", './views');
 
 //middleware
 app.use(express.static('./assets'))
+
+
 
 app.listen(port, (err)=>{
     if(err){
