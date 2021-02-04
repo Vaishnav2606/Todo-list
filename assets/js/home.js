@@ -36,7 +36,7 @@ $("#backward-btn").click((e)=>{
 
 });
 
-$("#add-taskclear").click((e)=>{
+$("#add-task").click((e)=>{
 
     $('#task-form').submit();
 

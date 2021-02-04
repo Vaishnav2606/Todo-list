@@ -1,10 +1,13 @@
 const express = require('express');
 const port = 8000;
 
-const app = express();
-app.use(express.urlencoded())
+//getting the database
+var db = require('./config/mongoose');
+//including the tasks schema
+const tasks = require('./models/task.js');
 
-var list = [];
+const app = express();
+app.use(express.urlencoded());
 
 //Using the express Router
 app.use('/', require('./routes'))
