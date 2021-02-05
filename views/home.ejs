@@ -38,7 +38,7 @@
                 <!--background boxes of the bar-->
                 <div class="progress-bar-bg">
                     <!--progress-bar-filler class is used to fill the boxes-->
-                    <div class="fillColor progress-bar-filler"></div>
+                    <div class="progress-bar-filler" style="width: 100%;"></div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-bar-filler"></div>
@@ -51,11 +51,10 @@
 
             <!--div for all the neccessary steps to create a task and to display 
                 tasks. this is scrollable through js-->
-                <div id="todo-list" class=".disable-scrollbars">
+                <div id="todo-list">
                     <!--div for the home part which will contain the tasks and if there 
                         isnt any task then some message will be displayed-->
                     <div id="task-container">
-
                         <% if(tasks.length == 0){ %>
                                 <!--this is wil be showed if there isnt any tasks-->
                                 <div id="no-tasks">
@@ -65,7 +64,42 @@
                                     </div>
                                     <button id="create-new-task-btn">Create Task</button>
                                 </div>
-                        <% } %> 
+                        <% }else{ %>
+                                <!--this will be showed if there are existing tasks in the database-->
+                                <div id="tasks-display-container">
+                                    <!--this will contain all the tasks and this is a form because a 
+                                        checkbox is to be added which is supposed to be used to delete 
+                                        a task-->
+                                    <form action="/delete-task" method="GET" id="tasks-list-form">
+                                        <% for(let task of tasks){ %> 
+                                            <!--individual tasks-->
+                                            <div class="task">
+                                                <input type="checkbox" name="delete" id="<%= task.id %>" value="<%= task.id %>">
+                                                
+                                                <!--the label contains the task description, date, category, etc-->
+                                                <label for="<%= task.id %>" > 
+                                                    <!--custom checkbox-->
+                                                    <span  class="checkbox"></span>
+                                                    <!--task description and date container-->
+                                                    <div class="task-desciption-date-container">
+                                                        <p class="task-description"><%= task.description %></p>
+                                                        <p class="task-date"><i class="far fa-calendar-alt"></i>&ensp;<%= task.date %></p>
+                                                    </div>
+                                                    <!--task container-->
+                                                    <div class="task-category">
+                                                        <p><%= task.category %></p>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        <% } %> 
+                                        </form>
+                                        <!--task add and delete button-->
+                                        <div id="add-delete-task-btns">
+                                            <button id="add-task-btn"><i class="fas fa-plus"></i>&ensp;Add Task</button>
+                                            <button id="delete-task-btn" style><i class="fas fa-trash-alt"></i>&ensp;Delete Task</button>
+                                        </div>
+                                </div>
+                            <% } %>  
 
                     </div>
 
@@ -89,7 +123,7 @@
                                     <option value="other">other</option>
                                 </select>
                                 <!--date using JQuery UI-->
-                                <input type="text" id="datepicker" class="form-input" name="date" placeholder="Date" required>
+                                <input type="text" id="datepicker" class="form-input" name="date" placeholder="mm/dd/yyyy" required>
 
                             </div>
                             
@@ -101,10 +135,9 @@
         </main>
 
         <footer>
-            <!--backward and forward buttons-->
-            <div id="backward-forward-btns">
+            <!--backward buttons-->
+            <div id="backward-btn-container">
                 <button id="backward-btn" style="color: rgb(126, 125, 125);"><i class="fas fa-arrow-left"></i></button>
-                <button id="forward-btn"><i class="fas fa-arrow-right"></i></button>
             </div>
 
             <button id="add-task">Add Task</button>

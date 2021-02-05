@@ -4,9 +4,12 @@ const port = 8000;
 //getting the database
 var db = require('./config/mongoose');
 //including the tasks schema
-const tasks = require('./models/task.js');
+const Tasks = require('./models/task.js');
 
+//creating the server
 const app = express();
+
+//middleware
 app.use(express.urlencoded());
 
 //Using the express Router
@@ -20,7 +23,7 @@ app.set("views", './views');
 app.use(express.static('./assets'))
 
 
-
+//setting up the server
 app.listen(port, (err)=>{
     if(err){
         console.log("error has occured:",err);

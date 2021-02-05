@@ -1,16 +1,19 @@
 module.exports.createTask = (req,res)=>{    
-    const tasks = require('../models/task.js');
+    //getting tasks schema from models
+    const Tasks = require('../models/task.js');
 
-    tasks.create({
+    //creating a task
+    Tasks.create({
         description: req.body.description,
         category: req.body.category,
         date: req.body.date
     }, (err, newContact)=>{
+        //checking if there is an error or not
         if(err){
             console.log("error", err);
             return;
         }
-        console.log(newContact);
+        //redirecting to home page
         return res.redirect("back");
     });
 }
