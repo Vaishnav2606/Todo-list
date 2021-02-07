@@ -37,7 +37,6 @@ function moveBack(e){
     
 }
 
-
 //button events
 //create task button logic
 $("#create-new-task-btn").click(moveForward);
@@ -71,6 +70,12 @@ $("#add-task").click((e)=>{
 //delete button logic
 $('#delete-task-btn').click((e)=>{
     e.stopPropagation();
+
+    //checking if any task is checked or not
+    if($('input[name="delete"]:checked').length == 0){
+        alert("Please choose a task to delete");
+        return;
+    }
 
     $('#tasks-list-form').submit();
 
