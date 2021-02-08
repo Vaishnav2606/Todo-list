@@ -281,7 +281,15 @@ button:hover{
     width: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+/*--common styles for the p tag after the description and date container--*/
+.task-desciption-date-container p{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /*--styles for description and date--*/
@@ -291,6 +299,7 @@ button:hover{
     margin: 0;
     letter-spacing: 1.2px;
     text-transform: capitalize;
+    margin-bottom: 5px;
 }
 .task-date{
     font-size: .8rem;
@@ -317,15 +326,15 @@ button:hover{
     letter-spacing: 1.2px;
 }
 
-/*--styles for add and delete task btns--*/
-#add-delete-task-btns{
+/*--styles for add and delete task btns container and the buttons--*/
+#add-delete-task-btns-container{
     width: 44%;
     height: 22%;
     display: flex;
     justify-content: space-between;
 }
 
-#add-delete-task-btns button{
+#add-delete-task-btns-container button{
     width: 48%;
     height: 100%;
     font-size: 1.4rem;
@@ -497,7 +506,9 @@ footer{
 
     /*--todo-list-container--*/
     #todo-list-container{
-        height: 920px;
+        width: 90vw;
+        height: 80vh;
+        min-height: 520px;
     }
 
     /*--header progress bar container and progress bar--*/
@@ -518,7 +529,7 @@ footer{
     
         to{
             opacity: 1;
-            top: 40%;
+            top: 30%;
         }
     }
     /*--no task message--*/
@@ -528,35 +539,44 @@ footer{
 
     /*--create task button--*/
     #create-new-task-btn{
-        width: 32%;
+        width: 30%;
         height: 26%;
-        font-size: 2.6rem;
+        font-size: 4vw;
         padding: 2%;
+        border-radius: 18px;
     }
 
     /*--media query for the tab which will be showed if there are tasks in the database--*/
+    /*--task container--*/
+    #tasks-list-form{
+        margin-bottom: 5vw;
+    }
     /*--task and task label--*/
     .task{
-        height: 35%;
+        height: 40%;
+        min-height: 132px;
     }
     .task > label{
-        padding-left: 5rem;
+        padding-left: 6rem;
     }
 
     /*--checkbox--*/
     .checkbox{
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 5vw;
+        height: 5vw;
     }
 
     /*--task description--*/
     .task-description{
-        font-size: 3rem
+        font-size: 6vw;
     }
 
     /*--task date--*/
     .task-date{
-        font-size: 1.6rem;
+        font-size: 3vw;
+    }
+    .task-date i{
+        font-size: 3vw;
     }
 
     /*--task category--*/
@@ -566,18 +586,21 @@ footer{
     }
 
     /*--task add and delete button--*/
-    #add-delete-task-btns{
+    #add-delete-task-btns-container{
         width: 60%;
     }
-    #add-delete-task-btns button{
-        font-size: 2rem;
+    #add-delete-task-btns-container button{
+        font-size: 3vw;
     }
 
     /*--media queries for the form used to create a task--*/
     /*--form input--*/
     .form-input{
-        font-size: 2.8rem;
+        font-size: 5vw;
         height: 25%;
+    }
+    .form-input option{
+        font-size: 2vw;
     }
 
     /*--category-date-container--*/
@@ -588,19 +611,239 @@ footer{
     /*--date picker--*/
     /*--this element is created by the JQuery date picker--*/
     .ui-widget{
-        font-size: 1.6em;
+        font-size: 1.4em;
     }
 
-    /*--add task button used on create task tab--*/
+    /*--footer and add task button on footer--*/
+    footer{
+        padding: .8rem 1rem;
+    }
     #add-task{
-        width: 35%;
-        font-size: 3rem;
+        width: 30%;
+        font-size: 2.8rem;
     }
 
     /*--backward button--*/
     #backward-btn-container button{
         font-size: 5rem;
     }
-
 }
 
+
+
+
+/*--media queries for 720px--*/
+@media screen and (max-width: 768px){
+
+    /*--todo list container--*/
+    #todo-list-container{
+        width: 95vw;
+        height: 80vh;
+    }
+
+    /*--progress bar inside the header--*/
+    .progress-bar-container{
+        width: 30%;
+    }
+    
+    /*--styles for the tab which will be showed if there are no tasks in the database--*/
+    /*--no tasks message animation--*/
+    @keyframes textFadeIn{
+        from{
+            opacity: 0;
+            top: 60%;
+        }
+    
+        to{
+            opacity: 1;
+            top: 15%;
+        }
+    }
+    /*--styles for the message which will be showed if there are no tasks--*/
+    .no-tasks-msg p{
+        font-size: 6vw;
+    }
+
+    /*--create task button--*/
+    #create-new-task-btn{
+        width: 52vw;
+        font-size: 5vw;
+        max-width: 240px;
+    }
+
+    /*--styles for the tab whch will be showed if there are task in the database--*/
+    /*--task list container--*/
+    #tasks-list-form{
+        margin-bottom: 6vw;
+    }
+    /*--task box and label inside the task--*/
+    .task{
+        height: 35%;
+        
+    }
+    .task > label{
+        padding-left: 10vw;
+    }
+
+    /*--checkbox--*/
+    .checkbox{
+        width: 6vw;
+        height: 6vw;
+    }
+
+    /*--task description--*/
+    .task-description{
+        font-size: 6vw;
+    }
+
+    /*--task date--*/
+    .task-date{
+        font-size: 3vw;
+    }
+    .task-date i{
+        font-size: 3vw;
+    }
+    
+    /*--task category--*/
+    .task-category{
+        width: 35%;
+    }
+
+    /*--add and delete task buttons--*/
+    #add-delete-task-btns-container{
+        width: 85%;
+    }
+    #add-delete-task-btns-container button{
+        font-size: 5vw;
+    }
+
+
+    /*--styles for the form through which a new task can be created--*/
+    /*--styles for option tag used in category--*/
+    option{
+        font-size: 4vw;
+    }
+
+    /*--styles for date picker--*/
+    .ui-widget{
+        font-size: 1.25rem;
+        left: 250px !important;
+    }
+
+    /*--styles for footer--*/
+    /*--styles for add task button--*/
+    #add-task{
+        width: 45%;
+        font-size: 6vw;
+    }
+}
+
+/*--media queries for 425px--*/
+@media screen and (max-width: 425px){
+
+    /*--todo-list-container--*/
+    #todo-list-container{
+        width: 95vw;
+        height: 80vh;
+    }
+    /*--styles for header and progress bar inside header--*/
+    #todo-list-heading{
+        padding-left: 1.2rem;
+    }
+    .progress-bar-container{
+        width: 40%;
+        height: 2.4rem;
+    }
+
+    
+    /*--styles for the tab which will be displayed if there are no tasks in database--*/
+    /*--no task message--*/
+        /*--no tasks message animation--*/
+        @keyframes textFadeIn{
+            from{
+                opacity: 0;
+                top: 60%;
+            }
+        
+            to{
+                opacity: 1;
+                top: 30%;
+            }
+        }
+    .no-tasks-msg p{
+        font-size: 7.5vw;
+    }
+
+    /*--create task button--*/
+    #create-new-task-btn{
+        width: 45vw;
+        font-size: 6vw;
+        height: 24%;
+        border-radius: 6px;
+    }
+
+    
+    /*--styles for the tab which will be showed if there are task in the database--*/
+    /*--task class and label inside task box--*/
+    .task{
+        height: 34%;
+    }
+    .task > label{
+        padding-left: 13%;
+    }
+
+    /*--checkbox--*/
+    .checkbox{
+        width: 8.5vw;
+        height: 8.5vw;
+    }
+
+    /*--task description and date--*/
+    .task-description{
+        font-size: 8.5vw;
+    }
+    .task-date{
+        font-size: 4vw;
+    }
+
+    /*--task container--*/
+    .task-category{
+        width: 38%;
+        font-size: 5vw;
+    }
+
+    /*--add and delete button--*/
+    #add-delete-task-btns-container{
+        width: 96%;
+    }
+    #add-delete-task-btns-container button{
+        font-size: 5vw;
+        border-radius: 6px;
+        padding: 1%;
+    }
+
+
+    /*--styles for the second tab which is used to create a task--*/
+    .form-input{
+        font-size: 6.2vw;
+    }
+    .form-input option{
+        font-size: 5.2vw;
+    }
+
+    /*--styles for datepicker--*/
+    .ui-widget{
+        font-size: 4vw;
+        left: 21% !important;
+    }
+
+    /*--styles for element inside the footer--*/
+    #backward-btn-container button{
+        font-size: 12.5vw;
+    }
+    #add-task{
+        font-size: 6vw;
+        width: 50%;
+        border-radius: 6px;
+    }
+}
