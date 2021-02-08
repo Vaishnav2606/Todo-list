@@ -667,7 +667,7 @@ footer{
     /*--create task button--*/
     #create-new-task-btn{
         width: 52vw;
-        font-size: 5vw;
+        font-size: 4.5vw;
         max-width: 240px;
     }
 
@@ -727,7 +727,7 @@ footer{
     /*--styles for date picker--*/
     .ui-widget{
         font-size: 1.25rem;
-        left: 250px !important;
+        left: 220px !important;
     }
 
     /*--styles for footer--*/
